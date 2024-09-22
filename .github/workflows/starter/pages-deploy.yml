@@ -44,6 +44,9 @@ jobs:
         with:
           ruby-version: 3.3
           bundler-cache: true
+              
+      - name: Install npm dependencies
+        run: npm install  # npm 의존성 설
 
       - name: Build site
         run: bundle exec jekyll b -d "_site${{ steps.pages.outputs.base_path }}"
