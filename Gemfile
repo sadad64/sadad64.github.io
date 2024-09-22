@@ -12,3 +12,4 @@ platforms :mingw, :x64_mingw, :mswin, :jruby do
 end
 
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+gem "jekyll-bootstrap-sass"
