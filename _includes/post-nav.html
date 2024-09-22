@@ -1,0 +1,36 @@
+<!-- Navigation buttons at the bottom of the post. -->
+
+<nav class="post-navigation d-flex justify-content-between" aria-label="Post Navigation">
+  {% assign previous = site.data.locales[include.lang].post.button.previous %}
+  {% assign next = site.data.locales[include.lang].post.button.next %}
+
+  {% if page.previous.url %}
+    <a
+      href="{{ site.baseurl }}{{ page.previous.url }}"
+      class="btn btn-outline-primary"
+      aria-label="이전 글"
+    >
+      <p>{{ page.previous.title }}</p>
+      <i class="fas fa-arrow-left me-1"></i>
+    </a>
+  {% else %}
+    <div class="btn btn-outline-primary disabled" aria-label="이전 글">
+      <p>첫 번째 게시글 입니다.</p>
+    </div>
+  {% endif %}
+
+  {% if page.next.url %}
+    <a
+      href="{{ site.baseurl }}{{page.next.url}}"
+      class="btn btn-outline-primary"
+      aria-label="다음 글"
+    >
+      <p>{{ page.next.title }}</p>
+      <i class="fas fa-arrow-right me-1"></i>
+    </a>
+  {% else %}
+    <div class="btn btn-outline-primary disabled" aria-label="다음 글">
+      <p>최신 게시글 입니다.</p>
+    </div>
+  {% endif %}
+</nav>

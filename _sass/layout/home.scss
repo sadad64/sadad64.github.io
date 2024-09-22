@@ -1,0 +1,210 @@
+/*
+  Style for Homepage
+*/
+
+#post-list {
+  margin-top: 2rem;
+
+  .card-wrapper {
+    &:hover {
+      text-decoration: none;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 1.25rem;
+    }
+  }
+
+  .card {
+    border: 0;
+    background: none;
+
+    %img-radius {
+      border-radius: $radius-lg $radius-lg 0 0;
+    }
+
+    .preview-img {
+      @extend %img-radius;
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; // 4:3 비율을 유지하려면 75%, 16:9 비율은 56.25%
+      overflow: hidden;
+
+      img {
+        @extend %img-radius;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      
+      }
+    }
+
+    .card-body {
+      height: 100%;
+      padding: 1rem;
+
+      .card-title {
+        @extend %text-clip;
+
+        color: white !important;
+        font-size: 1.45rem;
+        font-weight: 500;
+      }
+
+      %muted {
+        color: rgba(255, 255, 255, 0.822) !important;
+      }
+
+      .card-text.content {
+        @extend %muted;
+        font-size: 14px;
+        padding-bottom: 12px;
+
+        p {
+          @extend %text-clip;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;  /* 2에서 3으로 변경 */
+          -webkit-box-orient: vertical;
+          line-height: 1.5em;     /* 줄 간격 설정 (필요에 따라 조정) */
+          max-height: 4.5em;      /* line-height의 3배 */
+          line-height: 1.5;
+          margin: 0;
+        }
+      }
+
+      .post-meta {
+        @extend %muted;
+
+        i {
+          &:not(:first-child) {
+            margin-left: 1.5rem;
+          }
+        }
+
+        em {
+          @extend %normal-font-style;
+
+          color: inherit;
+        }
+
+        > div:first-child {
+          display: block;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+} /* #post-list */
+
+.pagination {
+  color: var(--text-color);
+  font-family: Lato, sans-serif;
+  justify-content: space-evenly;
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  .page-item {
+    .page-link {
+      color: var(--btn-patinator-text-color);
+      padding: 0 0.6rem;
+      display: -webkit-box;
+      -webkit-box-pack: center;
+      -webkit-box-align: center;
+      border-radius: 0.5rem;
+      border: 0;
+      background-color: inherit;
+    }
+
+    &.active {
+      .page-link {
+        background-color: var(--btn-paginator-hover-color);
+      }
+    }
+
+    &:not(.active) {
+      .page-link {
+        &:hover {
+          box-shadow: inset var(--btn-border-color) 0 0 0 1px;
+        }
+      }
+    }
+
+    &.disabled {
+      cursor: not-allowed;
+
+      .page-link {
+        color: rgba(108, 117, 125, 0.57);
+      }
+    }
+  } /* .page-item */
+} /* .pagination */
+
+/* Tablet */
+@media all and (min-width: 768px) {
+  %img-radius {
+    border-radius: $radius-lg 0 0 $radius-lg;
+  }
+
+  #post-list {
+    .card {
+      .card-body {
+        padding: 1.75rem 1.75rem 1.25rem 1.75rem;
+
+        .card-text {
+          display: inherit !important;
+        }
+
+        .post-meta {
+          i {
+            &:not(:first-child) {
+              margin-left: 1.75rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Hide SideBar and TOC */
+@media all and (max-width: 830px) {
+  .pagination {
+    .page-item {
+      &:not(:first-child):not(:last-child) {
+        display: none;
+      }
+    }
+  }
+}
+
+/* Sidebar is visible */
+@media all and (min-width: 831px) {
+  #post-list {
+    margin-top: 2.5rem;
+  }
+
+  .pagination {
+    font-size: 0.85rem;
+    justify-content: center;
+
+    .page-item {
+      &:not(:last-child) {
+        margin-right: 0.7rem;
+      }
+    }
+
+    .page-index {
+      display: none;
+    }
+  } /* .pagination */
+}
