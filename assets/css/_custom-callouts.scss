@@ -1,0 +1,82 @@
+/* Custom Callouts for Chirpy theme */
+.callout {
+    --callout-color: #339af0; /* 기본 색상 */
+    --text-color: #212529; /* 기본 텍스트 색상 */
+    padding: 1.25rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid #e9ecef;
+    border-left-width: 0.25rem;
+    border-radius: 0.25rem;
+    position: relative;
+    padding-left: 3.5rem;
+    color: var(--text-color);
+  
+    &::before {
+      font-family: "Font Awesome 5 Free";
+      position: absolute;
+      top: 1.25rem;
+      left: 1.25rem;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--callout-color);
+    }
+  
+    &.note {
+      background-color: #e7f5ff;
+      border-left-color: var(--callout-color);
+      &::before { content: "\f05a"; }
+    }
+  
+    &.tip {
+      --callout-color: #40c057;
+      background-color: #ebfbee;
+      border-left-color: var(--callout-color);
+      &::before { content: "\f0eb"; }
+    }
+  
+    &.warning {
+      --callout-color: #ff6b6b;
+      background-color: #fff5f5;
+      border-left-color: var(--callout-color);
+      &::before { content: "\f071"; }
+    }
+  
+    &.important {
+      --callout-color: #fcc419;
+      background-color: #fff9db;
+      border-left-color: var(--callout-color);
+      &::before { content: "\f06a"; }
+    }
+  
+    /* 기본 아이콘 (사용자 정의 타입용) */
+    &::before {
+      content: "\f054"; /* 기본 아이콘 (화살표) */
+    }
+  
+    &.custom-icon::before {
+      content: "" !important;
+      background-image: var(--custom-icon);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  
+    &.custom-color {
+      background-color: color-mix(in srgb, var(--callout-color) 15%, white);
+      border-left-color: var(--callout-color);
+    }
+  
+    .callout-title {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: var(--callout-color);
+      font-size: 1.1em;
+    }
+  
+    .callout-content {
+      color: var(--text-color);
+    }
+}  

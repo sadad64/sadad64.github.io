@@ -50,13 +50,13 @@
       .card-title {
         @extend %text-clip;
 
-        color: white !important;
+        color: var(--heading-color) !important;
         font-size: 1.45rem;
         font-weight: 500;
       }
 
       %muted {
-        color: rgba(255, 255, 255, 0.822) !important;
+        color: var(--text-muted-color) !important;
       }
 
       .card-text.content {
