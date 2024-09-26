@@ -1,0 +1,36 @@
+name: Fetch Bookmark Metadata
+
+on:
+  push:
+    branches:
+      - main  # 또는 your-branch-name
+  pull_request:
+    branches:
+      - main  # 또는 your-branch-name
+
+jobs:
+  fetch-metadata:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests beautifulsoup4
+
+    - name: Fetch metadata and update files
+      run: |
+        python .github/scripts/fetch_metadata.py
+    
+    - name: Commit changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add -A
+        git diff-index --quiet HEAD || (git commit -m "Fetch bookmark metadata" && git push)

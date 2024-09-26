@@ -8,7 +8,7 @@
     {% if category_name == first_post.categories[0] %}
       <li class="category-item main-category">
         <a href="{{ site.baseurl }}/categories/{{ category_name | slugify | url_encode }}/">
-          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-folder"></i>
           <span class="category-name">{{ category_name }}</span>
           <span class="category-count">{{ posts_of_category.size }}</span>
         </a>
@@ -27,7 +27,7 @@
       {% for sub_category in sub_categories %}
         <li class="category-item sub-category-item">
           <a href="{{ site.baseurl }}/categories/{{ sub_category | slugify | url_encode }}/">
-            <i class="fa-solid fa-minus"></i>
+            <i class="fa-solid fa-folder-tree"></i>
             <span class="category-name">{{ sub_category }}</span>
             <span class="category-count">{{ site.categories[sub_category].size }}</span>
           </a>

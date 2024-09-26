@@ -1,0 +1,12 @@
+<div class="category-list-main">
+  {% assign categories = site.categories | sort %}
+  {% for category in categories %}
+    {% assign category_name = category | first %}
+    {% if site.data.category_icons[category_name] %}
+      <div class="category-item-main">
+        <i class="fas fa-{{ site.data.category_icons[category_name] }}"></i>
+        <a href="{{ site.baseurl }}/categories/{{ category_name | slugify }}/">{{ category_name }}</a>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>

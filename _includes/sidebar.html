@@ -23,9 +23,11 @@
       <!-- home -->
       <li class="nav-item{% if page.layout == 'home' %}{{ " active" }}{% endif %}">
           <div class="category-list-container">
-            <h4><i class="fa-solid fa-list-ul" style="margin-right: 10px"></i>Categories</h4>
+            <h4>Categories</h4>
             {% include categories-list.html %}
           </div>
+
+        <h4>MENU</h4>
         <a href="{{ '/' | relative_url }}" class="nav-link">
           <i class="fa-fw fas fa-home"></i>
           <span>{{ site.data.locales[include.lang].tabs.home | upcase }}</span>
