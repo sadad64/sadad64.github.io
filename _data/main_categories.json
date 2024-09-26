@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Javascript",
+    "url": "/categories/javascript/",
+    "icon": "<i class=\"fa-brands fa-square-js\"></i>"
+  },
+  {
+    "name": "Node.js",
+    "url": "/categories/node.js/",
+    "icon": "<i class=\"fa-brands fa-node\"></i>"
+  },
+  {
+    "name": "Javascript",
+    "url": "/categories/javascript/",
+    "icon": "<i class=\"fa-brands fa-square-js\"></i>"
+  },  
+  {
+    "name": "Python",
+    "url": "/categories/python/",
+    "icon": "<i class=\"fa-brands fa-python\"></i>"
+  },
+  {
+    "name": "llm",
+    "url": "/categories/llm/",
+    "icon": "<i class=\"fa-solid fa-brain\"></i>"
+  },
+  {
+    "name": "Github",
+    "url": "/categories/github/",
+    "icon": "<i class=\"fab fa-github\"></i>"
+  },
+  {
+    "name": "JAVA",
+    "url": "/categories/java/",
+    "icon": "<i class=\"fa-brands fa-java\"></i>"
+  },  
+  {
+    "name": "책과 논문",
+    "url": "/categories/책장/",
+    "icon": "<i class=\"fa-solid fa-book\"></i>"
+  },
+  {
+    "name": "기술경영",
+    "url": "/categories/기술경영/",
+    "icon": "<i class=\"fa-solid fa-microchip\"></i>"
+  },
+  {
+    "name": "끄적인 글",
+    "url": "/categories/소설/",
+    "icon": "<i class=\"fa-solid fa-pen-nib\"></i>"
+  }
+]

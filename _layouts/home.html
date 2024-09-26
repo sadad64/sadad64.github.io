@@ -11,35 +11,16 @@ refactor: true
 {% assign posts = '' | split: '' %}
 
 <!-- Get pinned posts -->
-
-{% assign offset = paginator.page | minus: 1 | times: paginator.per_page %}
-{% assign pinned_num = pinned.size | minus: offset %}
+{% assign pinned_num = pinned.size %}
 
 {% if pinned_num > 0 %}
-  {% for i in (offset..pinned.size) limit: pinned_num %}
+  {% for i in (0..pinned.size) limit: pinned_num %}
     {% assign posts = posts | push: pinned[i] %}
   {% endfor %}
-{% else %}
-  {% assign pinned_num = 0 %}
 {% endif %}
 
-<!-- Get default posts -->
-
-{% assign default_beg = offset | minus: pinned.size %}
-
-{% if default_beg < 0 %}
-  {% assign default_beg = 0 %}
-{% endif %}
-
-{% assign default_num = paginator.posts | size | minus: pinned_num %}
-{% assign default_end = default_beg | plus: default_num | minus: 1 %}
-
-{% if default_num > 0 %}
-  {% for i in (default_beg..default_end) %}
-    {% assign posts = posts | push: default[i] %}
-  {% endfor %}
-{% endif %}
-
+<h2 class="custom-home-title">🏆 직접 PICK한 포스트 모음</h2>
+<span class="custom-home-title-description">주인장의 선택! 직접 선택한 포스트들을 만나보세요!</span>
 <div id="post-list" class="flex-grow-1 px-xl-1">
   {% for post in posts %}
     <article class="card-wrapper card">
@@ -101,6 +82,69 @@ refactor: true
 </div>
 <!-- #post-list -->
 
+
+<h2 class="custom-home-title">🍞 갓구운 따끈따끈한 포스트</h2>
+<span class="custom-home-title-description">업로드된지 얼마 안된 따끈따끈한 글을 만나보세요!</span>
+{% assign posts = default | sort: 'date' | reverse %}
+
+<div id="post-list" class="flex-grow-1 px-xl-1">
+  {% for post in posts limit: 10 %}
+    <article class="card-wrapper card">
+      <a href="{{ post.url | relative_url }}" class="post-preview row g-0 flex-md-row">
+        {% assign card_body_col = '12' %}
+
+        {% if post.content contains '<img' %}
+          {% assign images = post.content | split: '<img ' %}
+          {% assign firstImage = images[1] | split: 'src="' %}
+          {% assign imageSource = firstImage[1] | split: '"' | first %}
+
+          <div class="col-md-4" style="object-fit: cover;">
+            <img src="{{ imageSource }}" alt="Post Image" class="img-fluid h-100">
+          </div>
+
+          {% assign card_body_col = '8' %}
+        {% endif %}
+
+        <div class="col-md-{{ card_body_col }}">
+          <div class="card-body d-flex flex-column">
+            <h1 class="card-title my-2 mt-md-0">{{ post.title }}</h1>
+
+            <div class="card-text content mt-0 mb-3">
+              <p>{% include post-description.html %}</p>
+            </div>
+
+            <div class="post-meta flex-grow-1 d-flex align-items-end">
+              <div class="me-auto">
+                <!-- posted date -->
+                <i class="far fa-calendar fa-fw me-1"></i>
+                {% include datetime.html date=post.date lang=lang %}
+
+                <!-- categories -->
+                {% if post.categories.size > 0 %}
+                  <i class="far fa-folder-open fa-fw me-1"></i>
+                  <span class="categories">
+                    {% for category in post.categories %}
+                      {{ category }}
+                      {%- unless forloop.last -%},{%- endunless -%}
+                    {% endfor %}
+                  </span>
+                {% endif %}
+              </div>
+            </div>
+            <!-- .post-meta -->
+          </div>
+          <!-- .card-body -->
+        </div>
+      </a>
+    </article>
+  {% endfor %}
+</div>
+<!-- #post-list -->
+
 {% if paginator.total_pages > 1 %}
   {% include post-paginator.html %}
 {% endif %}
+
+<h2 class="custom-home-title">📌 카테고리 모아보기</h2>
+<span class="custom-home-title-description">주요 카테고리는 여기서, 카테고리 모아보기!</span>
+{% include main-categories.html %}

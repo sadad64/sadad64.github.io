@@ -1,0 +1,14 @@
+<div class="main-ui-category-grid">
+  {% for category in site.data.main_categories %}
+    {% assign category_posts = site.categories[category.name] | size %}
+    <div class="main-ui-category-item">
+      <a href="{{ category.url | relative_url }}">
+        <div class="main-ui-category-icon">
+          {{ category.icon | raw }}
+        </div>
+        <div class="main-ui-category-name">{{ category.name }}</div>
+        <div class="main-ui-category-count">{{ category_posts }}</div>
+      </a>
+    </div>
+  {% endfor %}
+</div>
