@@ -24,7 +24,7 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@google-analytics/data": "^4.8.0",
+    "@google-analytics/data": "^4.10.0",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3"
   },
